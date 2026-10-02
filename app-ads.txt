@@ -1,0 +1,5 @@
+# Replace YOUR_ADMOB_PUBLISHER_ID with your actual AdMob Publisher ID.
+# Example:
+# google.com, pub-1234567890123456, DIRECT, f08c47fec0942fa0
+
+google.com, pub-2410970111930962, DIRECT, f08c47fec0942fa0
