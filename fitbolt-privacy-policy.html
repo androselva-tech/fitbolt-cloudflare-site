@@ -1,74 +1,615 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy - FITBolt</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>FitBolt Privacy Policy</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f9f4;
+    --surface: #ffffff;
+    --surface-2: #eef2e7;
+    --ink: #16211a;
+    --ink-muted: #57654f;
+    --ink-faint: #83917a;
+    --border: #dee6d5;
+    --accent: #5c8a1f;
+    --accent-bright: #bfe756;
+    --accent-soft: #e6f2ca;
+    --focus: #2f6fb0;
+    color-scheme: light;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #10150d;
+      --surface: #181f14;
+      --surface-2: #1f281a;
+      --ink: #edf3e6;
+      --ink-muted: #a9b89f;
+      --ink-faint: #74836b;
+      --border: #2b3524;
+      --accent: #bfe756;
+      --accent-bright: #bfe756;
+      --accent-soft: rgba(191, 231, 86, 0.14);
+      --focus: #8fc2f2;
+      color-scheme: dark;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #10150d;
+    --surface: #181f14;
+    --surface-2: #1f281a;
+    --ink: #edf3e6;
+    --ink-muted: #a9b89f;
+    --ink-faint: #74836b;
+    --border: #2b3524;
+    --accent: #bfe756;
+    --accent-bright: #bfe756;
+    --accent-soft: rgba(191, 231, 86, 0.14);
+    --focus: #8fc2f2;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+    font-size: 16.5px;
+    line-height: 1.65;
+    padding-inline: 20px;
+    padding-block: 0 48px;
+  }
+
+  img { max-width: 100%; }
+
+  h1, h2, h3, .display {
+    font-family: "Sora", "Segoe UI", Arial, sans-serif;
+    text-wrap: balance;
+  }
+
+  .topbar {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 10;
+    margin-inline: -20px;
+    padding: 14px 20px;
+    padding-top: calc(14px + env(safe-area-inset-top, 0px));
+    background: color-mix(in srgb, var(--bg) 86%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .topbar .name {
+    font-family: "Sora", sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+  }
+
+  .topbar .name span { color: var(--accent); }
+
+  .topbar .updated {
+    font-family: "Sora", sans-serif;
+    font-size: 11.5px;
+    color: var(--ink-faint);
+    letter-spacing: 0.02em;
+  }
+
+  main { max-width: 700px; margin: 0 auto; }
+
+  header.hero { padding-block: 40px 20px; }
+
+  .eyebrow {
+    font-family: "Sora", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 10px;
+  }
+
+  h1 {
+    font-size: clamp(28px, 6vw, 38px);
+    font-weight: 700;
+    margin: 0 0 14px;
+    line-height: 1.12;
+  }
+
+  .lede {
+    font-size: 17.5px;
+    color: var(--ink-muted);
+    max-width: 62ch;
+    margin: 0;
+  }
+
+  nav.toc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 22px;
+    margin-block: 28px 8px;
+  }
+
+  nav.toc .toc-label {
+    font-family: "Sora", sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 0 0 12px;
+  }
+
+  nav.toc ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px 20px;
+    counter-reset: toc;
+  }
+
+  @media (max-width: 520px) {
+    nav.toc ol { grid-template-columns: 1fr; }
+  }
+
+  nav.toc li { counter-increment: toc; }
+
+  nav.toc a {
+    font-family: "Sora", sans-serif;
+    font-size: 13.5px;
+    color: var(--ink);
+    text-decoration: none;
+    display: flex;
+    gap: 8px;
+  }
+
+  nav.toc a:hover { color: var(--accent); }
+
+  nav.toc a::before {
+    content: counter(toc, decimal-leading-zero);
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+  }
+
+  section {
+    padding-block: 34px;
+    border-top: 1px solid var(--border);
+    scroll-margin-top: 70px;
+  }
+
+  section .num, .contact-card .num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Sora", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border-radius: 999px;
+    width: 26px;
+    height: 26px;
+    margin-bottom: 12px;
+  }
+
+  h2 { font-size: 21px; font-weight: 700; margin: 0 0 14px; }
+
+  h3 {
+    font-family: "Sora", sans-serif;
+    font-size: 14.5px;
+    font-weight: 700;
+    margin: 22px 0 8px;
+    color: var(--ink);
+  }
+
+  p { margin: 0 0 14px; }
+  p:last-child { margin-bottom: 0; }
+
+  ul { margin: 0 0 14px; padding-left: 1.2em; }
+  li { margin-bottom: 6px; }
+  li:last-child { margin-bottom: 0; }
+
+  strong { color: var(--ink); }
+
+  a { color: var(--focus); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: "Sora", sans-serif;
+    font-size: 13px;
+    margin-block: 6px 16px;
+  }
+
+  .table-wrap { overflow-x: auto; }
+
+  .data-table th, .data-table td {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+
+  .data-table th {
+    color: var(--ink-faint);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-size: 11px;
+    white-space: nowrap;
+  }
+
+  .data-table td { color: var(--ink-muted); }
+  .data-table td.what { color: var(--ink); font-weight: 600; font-family: "Sora", sans-serif; }
+
+  .pill {
+    display: inline-block;
+    font-family: "Sora", sans-serif;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: var(--surface-2);
+    color: var(--ink-muted);
+    border: 1px solid var(--border);
+  }
+
+  .pill.on-device { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 45%, var(--border)); }
+
+  .callout {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin-block: 16px;
+    font-size: 15px;
+  }
+
+  .callout p { margin: 0; }
+  .callout p + p { margin-top: 8px; }
+
+  footer {
+    margin-top: 8px;
+    padding-top: 30px;
+    border-top: 1px solid var(--border);
+  }
+
+  .contact-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .contact-card h2 { margin: 0; }
+
+  .contact-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    font-family: "Sora", sans-serif;
+    font-size: 14.5px;
+  }
+
+  .contact-value {
+    font-weight: 700;
+    color: var(--ink);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 6px 10px;
+    user-select: all;
+  }
+
+  .copy-btn {
+    font-family: "Sora", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border: none;
+    border-radius: 8px;
+    padding: 7px 12px;
+    cursor: pointer;
+  }
+
+  .copy-btn:hover { filter: brightness(0.97); }
+
+  .fineprint {
+    margin-top: 26px;
+    font-family: "Sora", sans-serif;
+    font-size: 12px;
+    color: var(--ink-faint);
+    text-align: center;
+  }
+
+  [hidden] { display: none !important; }
+</style>
 </head>
 <body>
-  <main class="container">
-    <article class="card policy">
-      <h1>Privacy Policy</h1>
-      <p><strong>Last updated:</strong> October 2, 2026</p>
 
-      <h2>Introduction</h2>
-      <p>
-        FITBolt ("we", "our", or "the app") respects your privacy. This Privacy Policy
-        explains how information may be collected, used, and shared when you use FITBolt.
-      </p>
+<div class="topbar">
+  <div class="name">Fit<span>Bolt</span> — Privacy Policy</div>
+  <div class="updated">Effective September 28, 2026</div>
+</div>
 
-      <h2>Information We Collect</h2>
-      <p>
-        Depending on the features you use, FITBolt may process information such as
-        exercise activity, device information, and information you voluntarily provide.
-      </p>
+<main>
+  <header class="hero">
+    <p class="eyebrow">Privacy Policy</p>
+    <h1>Your workouts are watched by your camera, not by us.</h1>
+    <p class="lede">
+      This explains what FitBolt collects, what it processes only on your device and never sees,
+      and what actually gets saved to your account. FitBolt is a fitness app by an independent developer
+      (package <code>com.androselva1988.motion</code>) — not a company with a legal team, just a plain account
+      of how the app actually works.
+    </p>
+  </header>
 
-      <h2>How We Use Information</h2>
-      <p>
-        Information may be used to provide and improve app functionality, troubleshoot
-        problems, maintain security, and provide relevant advertising where applicable.
-      </p>
+  <nav class="toc" aria-label="Table of contents">
+    <p class="toc-label">On this page</p>
+    <ol>
+      <li><a href="#collect">Information we collect</a></li>
+      <li><a href="#camera">Camera &amp; on-device processing</a></li>
+      <li><a href="#use">How we use information</a></li>
+      <li><a href="#ads">Ads</a></li>
+      <li><a href="#third-party">Third-party services</a></li>
+      <li><a href="#storage">Storage &amp; security</a></li>
+      <li><a href="#sharing">Data sharing</a></li>
+      <li><a href="#choices">Your choices</a></li>
+      <li><a href="#retention">Data retention</a></li>
+      <li><a href="#children">Children's privacy</a></li>
+      <li><a href="#changes">Changes to this policy</a></li>
+      <li><a href="#contact">Contact us</a></li>
+    </ol>
+  </nav>
 
-      <h2>Advertising</h2>
-      <p>
-        FITBolt may use third-party advertising services such as Google AdMob.
-        These services may use device identifiers or similar technologies to provide
-        and measure advertisements, subject to their own privacy policies.
-      </p>
+  <section id="collect">
+    <span class="num">01</span>
+    <h2>Information we collect</h2>
+    <p>FitBolt asks you to create an account so your workouts, scans, and progress follow you between sessions. Here is everything that account can hold:</p>
 
-      <h2>Third-Party Services</h2>
-      <p>
-        Third-party services used by the app may process information according to their
-        respective privacy policies and terms.
-      </p>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr><th>What</th><th>Examples</th><th>Where it comes from</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="what">Account info</td>
+            <td>Email address, display name</td>
+            <td>You, when signing up with email/password, Google, or Microsoft</td>
+          </tr>
+          <tr>
+            <td class="what">Profile info</td>
+            <td>Body weight, daily calorie goal</td>
+            <td>You, entered by hand in your Profile</td>
+          </tr>
+          <tr>
+            <td class="what">Workout activity</td>
+            <td>Exercise type, reps, duration, estimated calories burned, date/time</td>
+            <td>Recorded automatically while you play or train</td>
+          </tr>
+          <tr>
+            <td class="what">Body Scan results</td>
+            <td>Height, BMI, body measurements — numbers only</td>
+            <td>Calculated on your device from a brief camera scan</td>
+          </tr>
+          <tr>
+            <td class="what">Advertising identifier</td>
+            <td>Your device's ad ID, general device info, approximate location</td>
+            <td>Collected directly by Google AdMob to serve and measure ads — see <a href="#ads">Ads</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-      <h2>Children's Privacy</h2>
-      <p>
-        FITBolt is not intended to knowingly collect personal information from children
-        without appropriate parental involvement or consent where required by law.
-      </p>
+    <div class="callout">
+      <p><strong>The Body Scan photo itself is never uploaded.</strong> FitBolt takes a photo locally to calculate
+      your measurements, then keeps that photo on your device only for as long as the calculation takes.
+      Only the resulting numbers — height, BMI, and so on — are saved to your account.</p>
+    </div>
+  </section>
 
-      <h2>Security</h2>
-      <p>
-        We take reasonable measures to protect information processed through the app.
-        However, no method of electronic transmission or storage is completely secure.
-      </p>
+  <section id="camera">
+    <span class="num">02</span>
+    <h2>Camera &amp; on-device processing</h2>
+    <p>Every game and guided workout in FitBolt uses your camera to see your movement — that's the entire point of the app. Here's exactly what that does and doesn't mean:</p>
 
-      <h2>Changes to This Privacy Policy</h2>
-      <p>
-        We may update this Privacy Policy from time to time. The updated version will
-        be posted on this page with a revised effective date.
-      </p>
+    <h3>What happens on your device <span class="pill on-device">Never leaves your phone</span></h3>
+    <ul>
+      <li>Live camera frames are analyzed on-device (using Google's MediaPipe pose-detection models, bundled inside the app) to track your joints and count reps.</li>
+      <li>Raw video frames are never recorded, saved, or sent anywhere — they exist only for the fraction of a second it takes to measure a pose, then are discarded.</li>
+    </ul>
 
-      <h2>Contact</h2>
-      <p>
-        For privacy questions, please contact the app developer using the contact
-        information provided on the Google Play listing.
-      </p>
+    <h3>The one exception: Squat Dash's optional replay</h3>
+    <p>
+      Squat Dash can record your screen so you can share a highlight afterward. That recording is saved
+      to your device's local storage. It is <strong>only</strong> sent anywhere if you tap "Share Replay" and
+      pick a destination yourself (Messages, Instagram, etc.) — FitBolt never uploads it automatically, and
+      you can decline the recording permission and still play the game.
+    </p>
+  </section>
 
-      <p><a href="/">← Back to FITBolt</a></p>
-    </article>
-  </main>
+  <section id="use">
+    <span class="num">03</span>
+    <h2>How we use information</h2>
+    <ul>
+      <li>To run your account — sign you in, keep your settings, and show your own history back to you.</li>
+      <li>To calculate calories, BMI, and progress from the activity you log.</li>
+      <li>To match you a recommended workout plan or nutrition plan based on your BMI category.</li>
+      <li>To keep the app working and diagnose problems when something breaks.</li>
+    </ul>
+    <p>
+      FitBolt itself does not build an advertising profile of you, and never sells your account data to
+      advertisers. Ads in the app are served directly by Google AdMob on your device — see <a href="#ads">Ads</a>
+      for what that involves.
+    </p>
+  </section>
+
+  <section id="ads">
+    <span class="num">04</span>
+    <h2>Ads</h2>
+    <p>
+      FitBolt shows ads through Google AdMob to help keep the app free to use. Today that's a single
+      full-screen ad shown at a natural break point — after you finish a workout or a game round. It never
+      shows mid-exercise, and never more than once every few minutes.
+    </p>
+
+    <h3>Your consent choice</h3>
+    <p>
+      Depending on where you are, Google's own consent form asks whether you're okay with personalized ads
+      (based on your interests) or would rather see non-personalized ones. You can change that choice anytime
+      through the privacy options control the consent form itself provides.
+    </p>
+
+    <h3>What Google AdMob collects</h3>
+    <p>
+      To serve and measure ads, Google AdMob collects your device's advertising identifier, general device
+      information, and approximate location directly — this is Google's own data collection, governed by
+      <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">Google's Ads Privacy &amp; Terms</a>,
+      not something FitBolt stores or has access to itself.
+    </p>
+  </section>
+
+  <section id="third-party">
+    <span class="num">05</span>
+    <h2>Third-party services</h2>
+    <p>FitBolt is built on a small number of services that process data on our behalf. We don't run our own servers for your account data — Google's Firebase platform does:</p>
+    <ul>
+      <li><strong>Firebase Authentication &amp; Firestore (Google)</strong> — stores your account, profile, workout history, and Body Scan results. Governed by <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</li>
+      <li><strong>Google Sign-In</strong> — if you choose to sign in with Google, Google shares your name and email with FitBolt per your consent.</li>
+      <li><strong>Microsoft identity platform</strong> — same idea, if you choose "Continue with Microsoft".</li>
+      <li><strong>Health Connect (Android) / Apple HealthKit (iOS)</strong> — if you connect them, FitBolt reads sleep, heart rate, blood pressure, and step data live to show in your Health Status card. This is read-only, requires your explicit permission, and is not stored on our servers — see <a href="#storage">Storage &amp; security</a>.</li>
+      <li><strong>Google AdMob</strong> — serves the ads described in <a href="#ads">Ads</a>, and collects device/advertising data directly to do so.</li>
+    </ul>
+  </section>
+
+  <section id="storage">
+    <span class="num">06</span>
+    <h2>Storage &amp; security</h2>
+    <p>
+      Account data, workout history, and Body Scan results are stored in Google's Firebase infrastructure,
+      encrypted in transit. Access to your data is scoped to your own signed-in account.
+    </p>
+    <p>
+      Wearable health data (sleep, heart rate, blood pressure, steps) is read live each time you open your
+      Health Status card and is <strong>not</strong> written to our database — it exists in the app only while
+      you're viewing it.
+    </p>
+  </section>
+
+  <section id="sharing">
+    <span class="num">07</span>
+    <h2>Data sharing</h2>
+    <p>We do not sell your personal data. We share data only with:</p>
+    <ul>
+      <li>The service providers listed above (Firebase, Google Sign-In, Microsoft, Google AdMob), strictly to operate the app and, for AdMob, to serve ads.</li>
+      <li>Whoever <em>you</em> choose, if you tap Share on a Squat Dash replay.</li>
+      <li>Law enforcement or regulators, only if we're legally required to.</li>
+    </ul>
+  </section>
+
+  <section id="choices">
+    <span class="num">08</span>
+    <h2>Your choices</h2>
+    <ul>
+      <li><strong>Camera &amp; recording permissions</strong> — grant or revoke these anytime in your device Settings. Workouts that need pose tracking won't work without camera access, but the rest of the app will.</li>
+      <li><strong>Health Connect / HealthKit</strong> — connect or disconnect anytime from your device's own health-permissions settings.</li>
+      <li><strong>Ad personalization</strong> — change your consent choice anytime through the privacy options control in Google's own consent form, or your device's ad-personalization settings.</li>
+      <li><strong>Edit or correct your profile</strong> — anytime from Profile → Edit Profile.</li>
+      <li><strong>Delete your account and data</strong> — FitBolt doesn't yet have an in-app delete button. Email us at the address below and we'll delete your account and every record tied to it.</li>
+    </ul>
+  </section>
+
+  <section id="retention">
+    <span class="num">09</span>
+    <h2>Data retention</h2>
+    <p>
+      We keep your account data for as long as your account exists, so your history stays available to you.
+      If you request deletion (see above), we remove your account record, profile, workout history, and
+      Body Scan results within 30 days.
+    </p>
+  </section>
+
+  <section id="children">
+    <span class="num">10</span>
+    <h2>Children's privacy</h2>
+    <p>
+      FitBolt is not directed at children under 13, and we don't knowingly collect data from anyone under 13.
+      If you believe a child has created an account, contact us and we'll delete it.
+    </p>
+  </section>
+
+  <section id="changes">
+    <span class="num">11</span>
+    <h2>Changes to this policy</h2>
+    <p>
+      If FitBolt starts collecting or using data differently, this page will be updated and the date at the
+      top will change. We won't reduce your rights over data we've already collected without telling you.
+    </p>
+  </section>
+
+  <footer id="contact">
+    <div class="contact-card">
+      <span class="num">12</span>
+      <h2>Contact us</h2>
+      <p>Questions, deletion requests, or anything else about your data — reach the developer directly:</p>
+      <div class="contact-row">
+        <span class="contact-value" id="contact-email">androselva@gmail.com</span>
+        <button class="copy-btn" type="button" onclick="copyEmail()">Copy</button>
+      </div>
+    </div>
+    <p class="fineprint">FitBolt · com.androselva1988.motion · This policy applies to the FitBolt mobile app only.</p>
+  </footer>
+</main>
+
+<script>
+  function copyEmail() {
+    var email = document.getElementById('contact-email').textContent;
+    var btn = document.querySelector('.copy-btn');
+    var done = function () {
+      var original = btn.textContent;
+      btn.textContent = 'Copied';
+      setTimeout(function () { btn.textContent = original; }, 1500);
+    };
+    try {
+      navigator.clipboard.writeText(email).then(done).catch(function () { selectFallback(); });
+    } catch (e) {
+      selectFallback();
+    }
+    function selectFallback() {
+      var range = document.createRange();
+      range.selectNode(document.getElementById('contact-email'));
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+    }
+  }
+</script>
+
 </body>
 </html>
